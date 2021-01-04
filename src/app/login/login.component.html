@@ -1,0 +1,49 @@
+<div class="py-5">
+  <div class="row pt-5">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor" id="formLogin"></span>
+
+      <!-- form card login -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Member Login</h3>
+        </div>
+
+        <div class="card-body">
+          <form class #f="ngForm" class="form" (ngSubmit)="loginUser(f)" novalidate>
+            <div class="form-group">
+
+              <label for="uname1">Email</label>
+              <input type="text" [class.is-invalid]="Email.invalid && Email.touched" [(ngModel)]="loginUserData.Email"
+                name="Email" class="form-control rounded-0" #Email="ngModel" required>
+
+              <div *ngIf="f.submitted && Email.invalid">
+
+                <small class="text-danger" [class.d-none]="Email.valid || Email.untouched"> Email is required.</small>
+
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" [class.is-invalid]="Password.invalid && Password.touched"
+                [(ngModel)]="loginUserData.Password" name="Password" class="form-control rounded-0" #Password="ngModel"
+                required>
+
+              <div *ngIf="f.submitted && Password.invalid">
+                <div *ngIf="Password.errors.required" style="color: red; font-size: 12px;">Password is required</div>
+
+              </div>
+
+            </div>
+
+            <button type="submit" [disabled]="f.form.invalid" class="btn btn-success float-right">Login</button>
+          </form>
+        </div>
+        <!--/card-block-->
+      </div>
+      <!-- /form card login -->
+    </div>
+  </div>
+</div>
